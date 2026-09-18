@@ -1,0 +1,169 @@
+INFO:     Started server process [5576]
+INFO:     Waiting for application startup.
+2026-09-18 23:54:38,753 INFO    speechbrain.utils.quirks: Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-09-18 23:54:39,045 INFO    speechbrain.utils.quirks: Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-09-19 00:10:21,557 INFO    app.engines.f5: Loading TTS model 'en' (SWivid/F5-TTS) on cpu ...
+D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+2026-09-19 00:12:13,079 INFO    app.engines.f5: building en from SWivid/F5-TTS (F5-TTS v1 base — English + Chinese)
+2026-09-19 00:12:40,138 INFO    app.engines.f5: quantizing 167 Linear layers to int8 ...
+D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\torch\ao\nn\quantized\modules\utils.py:72: UserWarning: torch.quantize_per_tensor, torch.quantize_per_channel and other quantized tensor creation functions that produce tensors with dtype torch.quint8, torch.qint8, and torch.qint32 are deprecated and will be removed in a future PyTorch release. Please see https://github.com/pytorch/pytorch/issues/184982 for more information. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\quantized\Quantizer.cpp:116.)
+  qweight = torch.quantize_per_tensor(
+2026-09-19 00:12:57,689 INFO    app.engines.f5: model 'en' ready in 156.1s
+2026-09-19 00:12:57,700 INFO    app.engines.f5: Loading TTS model 'indic' (6Morpheus6/IndicF5) on cpu ...
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+2026-09-19 00:13:09,078 WARNING huggingface_hub.utils._http: '[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+Retrying in 1s [Retry 1/5].
+2026-09-19 00:13:09,086 WARNING huggingface_hub.utils._http: Retrying in 1s [Retry 1/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+2026-09-19 00:13:10,518 WARNING huggingface_hub.utils._http: '[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+Retrying in 2s [Retry 2/5].
+2026-09-19 00:13:10,518 WARNING huggingface_hub.utils._http: Retrying in 2s [Retry 2/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+2026-09-19 00:13:12,805 WARNING huggingface_hub.utils._http: '[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+Retrying in 4s [Retry 3/5].
+2026-09-19 00:13:12,806 WARNING huggingface_hub.utils._http: Retrying in 4s [Retry 3/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+2026-09-19 00:13:17,077 WARNING huggingface_hub.utils._http: '[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+Retrying in 8s [Retry 4/5].
+2026-09-19 00:13:17,079 WARNING huggingface_hub.utils._http: Retrying in 8s [Retry 4/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+2026-09-19 00:13:36,702 WARNING huggingface_hub.utils._http: '[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+Retrying in 8s [Retry 5/5].
+2026-09-19 00:13:36,707 WARNING huggingface_hub.utils._http: Retrying in 8s [Retry 5/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+2026-09-19 00:13:44,978 WARNING huggingface_hub.utils._http: '[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors
+ERROR:    Exception in ASGI application
+httpcore.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+httpx.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 422, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\routing.py", line 670, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 2734, in app
+    await route.handle(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 1780, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 2789, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 1800, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 1279, in handle
+    await app(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 158, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 144, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 706, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\fastapi\routing.py", line 352, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\app\api\routes.py", line 302, in clone
+    out = await run_in_threadpool(
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\app\services\synthesis.py", line 125, in clone
+    result = self.engine.synthesize(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\app\engines\f5.py", line 181, in synthesize
+    f5 = self._get_model(spec)
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\app\engines\f5.py", line 117, in _get_model
+    self._models[spec.key] = self._build_model(spec)
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\app\engines\f5.py", line 97, in _build_model
+    ckpt, vocab = self._download(spec)
+                  ^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\app\engines\f5.py", line 85, in _download
+    hf_hub_download(repo_id=spec.repo, filename=spec.ckpt_file, cache_dir=cache_dir)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1028, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1175, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\huggingface_hub\file_download.py", line 1923, in _raise_on_head_call_error
+    raise LocalEntryNotFoundError(
+huggingface_hub.errors.LocalEntryNotFoundError: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+2026-09-19 00:14:50,125 INFO    app.services.similarity: Loading ECAPA-TDNN speaker encoder ...
+2026-09-19 00:14:50,130 INFO    speechbrain.utils.fetching: Fetch hyperparams.yaml: Using file found at 'D:\SOMU\voice-cloning-system\data\models\ecapa-voxceleb\hyperparams.yaml'
+D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+  warnings.warn(
+2026-09-19 00:14:52,789 INFO    speechbrain.utils.fetching: Fetch embedding_model.ckpt: Using file found at 'D:\SOMU\voice-cloning-system\data\models\ecapa-voxceleb\embedding_model.ckpt'
+2026-09-19 00:14:52,792 INFO    speechbrain.utils.fetching: Fetch mean_var_norm_emb.ckpt: Using file found at 'D:\SOMU\voice-cloning-system\data\models\ecapa-voxceleb\mean_var_norm_emb.ckpt'
+2026-09-19 00:14:52,793 INFO    speechbrain.utils.fetching: Fetch classifier.ckpt: Using file found at 'D:\SOMU\voice-cloning-system\data\models\ecapa-voxceleb\classifier.ckpt'
+2026-09-19 00:14:52,795 INFO    speechbrain.utils.fetching: Fetch label_encoder.txt: Using file found at 'D:\SOMU\voice-cloning-system\data\models\ecapa-voxceleb\label_encoder.ckpt'
+2026-09-19 00:14:52,796 INFO    speechbrain.utils.parameter_transfer: Loading pretrained files for: embedding_model, mean_var_norm_emb, classifier, label_encoder
+2026-09-19 00:14:59,856 INFO    app.services.speakers: enrolled speaker 'somu' as 53c23c84337b (28.0s)
+2026-09-19 00:14:59,870 INFO    app.services.transcribe: Loading faster-whisper 'base' model (first use downloads it) ...
+2026-09-19 00:15:10,209 INFO    faster_whisper: Processing audio with duration 00:27.995
+2026-09-19 00:15:12,140 INFO    faster_whisper: VAD filter removed 00:02.800 of audio
+2026-09-19 00:15:13,771 INFO    faster_whisper: Detected language 'hi' with probability 0.41
+2026-09-19 00:16:54,999 INFO    app.engines.f5: Loading TTS model 'indic' (6Morpheus6/IndicF5) on cpu ...
+2026-09-19 00:16:55,659 INFO    httpx: HTTP Request: HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-19 00:16:55,665 WARNING huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-19 00:16:56,921 INFO    httpx: HTTP Request: GET https://huggingface.co/api/models/6Morpheus6/IndicF5/xet-read-token/6c546ac52b0e09596f85fa6da5787857483a7ed7 "HTTP/1.1 200 OK"
+D:\SOMU\voice-cloning-system\.venv\Lib\site-packages\huggingface_hub\file_download.py:142: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in D:\SOMU\voice-cloning-system\data\models\hf\models--6Morpheus6--IndicF5. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+2026-09-19 00:18:40,576 INFO    httpx: HTTP Request: HEAD https://huggingface.co/6Morpheus6/IndicF5/resolve/main/checkpoints/vocab.txt "HTTP/1.1 307 Temporary Redirect"
+2026-09-19 00:18:40,893 INFO    httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/6Morpheus6/IndicF5/6c546ac52b0e09596f85fa6da5787857483a7ed7/checkpoints%2Fvocab.txt?%2F6Morpheus6%2FIndicF5%2Fresolve%2Fmain%2Fcheckpoints%2Fvocab.txt=&etag=%2265db6313e8830d8a31b2ae46f15d8487456c1a8d%22 "HTTP/1.1 200 OK"
+2026-09-19 00:18:41,329 INFO    httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/6Morpheus6/IndicF5/6c546ac52b0e09596f85fa6da5787857483a7ed7/checkpoints%2Fvocab.txt?%2F6Morpheus6%2FIndicF5%2Fresolve%2Fmain%2Fcheckpoints%2Fvocab.txt=&etag=%2265db6313e8830d8a31b2ae46f15d8487456c1a8d%22 "HTTP/1.1 200 OK"
+2026-09-19 00:18:41,380 INFO    app.engines.f5: building indic from 6Morpheus6/IndicF5 (IndicF5 — 11 Indian languages incl. Hindi & Bengali (ungated mirror))
+2026-09-19 00:18:41,828 INFO    httpx: HTTP Request: HEAD https://huggingface.co/charactr/vocos-mel-24khz/resolve/main/config.yaml "HTTP/1.1 307 Temporary Redirect"
+2026-09-19 00:18:41,906 INFO    httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/charactr/vocos-mel-24khz/0feb3fdd929bcd6649e0e7c5a688cf7dd012ef21/config.yaml?%2Fcharactr%2Fvocos-mel-24khz%2Fresolve%2Fmain%2Fconfig.yaml=&etag=%22538262138a8b43863802f279909f26ec31c766b3%22 "HTTP/1.1 200 OK"
+2026-09-19 00:18:42,292 INFO    httpx: HTTP Request: HEAD https://huggingface.co/charactr/vocos-mel-24khz/resolve/main/pytorch_model.bin "HTTP/1.1 302 Found"
