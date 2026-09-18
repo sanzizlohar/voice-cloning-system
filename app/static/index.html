@@ -802,6 +802,59 @@ $("refFile").onchange = async () => {
 };
 
 drawWave();
+
+/* ================= auto-demo (?demo=1) =================
+   The page drives itself: enroll the bundled sample voice, type text,
+   flip to FAST, render, and play — so the workflow can be watched
+   end-to-end without touching anything. */
+async function autoDemo() {
+  const banner = (msg, ok) => setStatus($("enrollStatus"), msg, !ok);
+  try {
+    const bar = document.createElement("div");
+    bar.className = "status ok";
+    bar.style.color = "var(--amber)";
+    document.querySelector("details.run .rlist").appendChild(bar);
+    const say = (m) => bar.textContent = "AUTO-DEMO ▸ " + m;
+
+    say("checking for an enrolled voice…");
+    let speakers = await (await fetch("/api/v1/speakers")).json();
+    if (!speakers.length) {
+      say("no voices yet — enrolling the bundled sample voice…");
+      const refResp = await fetch("/static/demo_ref.wav");
+      const prepared = await toMono24k(await refResp.blob(), "vox_demo");
+      const fd = new FormData();
+      fd.append("reference_audio", prepared.blob, prepared.name);
+      fd.append("name", "vox_demo");
+      fd.append("consent", "true");
+      fd.append("ref_text", "Some call me nature. Others call me Mother Nature.");
+      const r = await fetch("/api/v1/speakers", { method: "POST", body: fd });
+      if (!r.ok) throw new Error("auto-enroll failed: " + r.status);
+      speakers = await r.json();
+      say("voice enrolled ✔ — fingerprint + transcript stored");
+      loadSpeakers();
+    }
+    await new Promise(r => setTimeout(r, 700));
+    const row = document.querySelector(".vrow");
+    if (row) { row.classList.add("sel"); row.querySelector("input").checked = true; }
+    wfStep(1);
+
+    say("typing text and selecting FAST quality…");
+    $("text").value = "Hi! This demo is running itself — the agent controls the server, and the console does the rest. Every readout you see is live.";
+    $("text").dispatchEvent(new Event("input"));
+    document.querySelector('.sw[data-nfe="8"]').click();
+    await new Promise(r => setTimeout(r, 700));
+
+    say("RENDER — synthesis in progress, watch the deck timer…");
+    await handleSynthesize(false);
+    say("done — audio playing in the monitor. Scroll down to see it.");
+    wfStep(3);
+  } catch (e) {
+    banner("AUTO-DEMO failed: " + e.message, false);
+  }
+}
+if (new URLSearchParams(location.search).has("demo")) {
+  setTimeout(autoDemo, 600);
+}
 </script>
 </body>
 </html>
