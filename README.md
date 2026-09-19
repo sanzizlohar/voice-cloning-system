@@ -1,5 +1,7 @@
 # VOXCLONE — Voice Cloning Console
 
+[![tests](https://github.com/sanzizlohar/voice-cloning-system/actions/workflows/tests.yml/badge.svg)](https://github.com/sanzizlohar/voice-cloning-system/actions/workflows/tests.yml) [![deploy](https://img.shields.io/badge/deploy-HF%20Space-ffb454)](deploy/DEPLOY.md) [![license](https://img.shields.io/badge/code-MIT-green)](LICENSE)
+
 A production-style **zero-shot voice cloning service**: enroll a short reference recording (6–30 s), then synthesize arbitrary text in that voice over HTTP — with a **multilingual model pool** (English, Hindi, Bengali, French, +9 more), **int8 dynamic quantization** for CPU inference, **streaming synthesis**, and **speaker-similarity scoring**.
 
 Built with **Python, PyTorch, FastAPI** on top of [F5-TTS](https://github.com/SWivid/F5-TTS) (flow-matching, zero-shot). Everything runs locally — no audio or text ever leaves the machine.
@@ -46,7 +48,7 @@ flowchart LR
 - **Cache**: results are keyed by SHA-1(reference audio, transcript, text, language, NFE, cfg, speed, seed, precision) — repeat demos are instant.
 - **Consent gate**: enrolling or uploading a reference requires `consent=true`; the attestation and timestamp are stored with the profile.
 
-## Quickstart
+## Quickstart (local)
 
 ```bash
 cd voice-cloning-system

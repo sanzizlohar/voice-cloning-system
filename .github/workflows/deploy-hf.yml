@@ -1,0 +1,25 @@
+"""Redeploy the Hugging Face Space automatically on every push to main.
+
+Required repo secret: HF_TOKEN (a Hugging Face token with write scope).
+Add it once:  repo Settings -> Secrets and variables -> Actions -> New secret.
+Or with the gh CLI:   gh secret set HF_TOKEN -R sanzizlohar/voice-cloning-system
+"""
+
+name: deploy-hf-space
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.HF_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install huggingface_hub
+      - run: python scripts/deploy_hf.py --token "${{ secrets.HF_TOKEN }}"
