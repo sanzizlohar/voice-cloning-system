@@ -253,3 +253,7 @@ tests/                      # 34 offline tests (fake engine)
 ## License
 
 Code: MIT (see [LICENSE](LICENSE)). Model checkpoints keep their authors' licenses — CC-BY-NC-4.0 (F5-TTS v1 Base, French fine-tune) and MIT (IndicF5) — and are downloaded at runtime from HuggingFace.
+
+## Deploying publicly
+
+See [deploy/DEPLOY.md](deploy/DEPLOY.md) — instant Cloudflare quick tunnel (no account) or a permanent free Hugging Face Space.

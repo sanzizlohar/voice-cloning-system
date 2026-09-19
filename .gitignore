@@ -14,3 +14,10 @@ pretrained_models/
 .DS_Store
 .env
 server.log
+cloudflared.exe
+tunnel.log
+tunnel.err.log
+tunnel_url.txt
+server.log
+server.err.log
+outputs/
