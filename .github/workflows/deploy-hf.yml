@@ -1,8 +1,13 @@
 """Redeploy the Hugging Face Space automatically on every push to main.
 
-Required repo secret: HF_TOKEN (a Hugging Face token with write scope).
-Add it once:  repo Settings -> Secrets and variables -> Actions -> New secret.
-Or with the gh CLI:   gh secret set HF_TOKEN -R sanzizlohar/voice-cloning-system
+Required repo secrets:
+  HF_TOKEN           — Hugging Face token with write scope
+  HF_DEPLOY_ENABLED  — set to "true" to activate (HF Docker Spaces need PRO;
+                       flip this on after subscribing, off to pause deploys)
+
+Add with the gh CLI:
+  gh secret set HF_TOKEN -R sanzizlohar/voice-cloning-system
+  gh variable set HF_DEPLOY_ENABLED -R sanzizlohar/voice-cloning-system --body "true"
 """
 
 name: deploy-hf-space
@@ -15,7 +20,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ secrets.HF_TOKEN != '' }}
+    if: ${{ vars.HF_DEPLOY_ENABLED == 'true' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

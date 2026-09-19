@@ -19,15 +19,25 @@ API, and audio all work through it (CORS and ports are handled by the tunnel).
 - ⚠️ this dev box is a 2-core CPU with 3.8 GB RAM — fine for 1–2 concurrent
   visitors (renders are serialized), not a crowd
 
-## Option 2 — Permanent: Hugging Face Space (free, always on)
+## Option 2 — Permanent & free: Oracle Cloud Always Free ARM VM
 
-See [`hf-space/`](./hf-space/) — a ready Docker Space (2 vCPU / 16 GB free tier).
-Deploy steps are in [`hf-space/README.md`](./hf-space/README.md). Result:
-`https://<you>-voxclone.hf.space`, always on, no visitor accounts.
+HF changed policy: Docker/Gradio Spaces now require PRO ($9/mo); free tiers of
+Render/Koyeb are 512 MB (too small for a 1.3 GB model). The genuinely-free
+permanent path is an Oracle Cloud **Always Free** ARM VM (4 cores / 24 GB):
 
-- ✅ survives reboots, 16 GB RAM (no OOM), public and shareable
-- ⚠️ free-tier storage is ephemeral (enrolled voices reset on restart)
-- ⚠️ first boot downloads the model (~1.3 GB), so allow a slow warm-up
+1. Sign up at oracle.com/cloud/free (card needed for verification, no charge)
+2. Create an ARM (Ampere A1) instance — Ubuntu 22.04, 4 OCPU / 24 GB
+3. On the VM: install docker, clone this repo, `docker compose up -d`
+   (or run uvicorn + the watchdog), open port 8000 in the security list
+4. Put Cloudflare (free) in front for TLS + caching: `cloudflared tunnel`
+
+Also viable:
+- **HF PRO ($9/mo)** — the prepared Space in `hf-space/` deploys with
+  `python scripts/deploy_hf.py` (token + auto-deploy already wired via GitHub
+  Actions; gated by the `HF_DEPLOY_ENABLED` repo variable)
+- **Modal.com** — $30/mo free credits, serverless CPU/GPU functions
+
+The quick tunnel (Option 1) remains free and unlimited-time on a personal machine.
 
 ## Split-frontend variant (advanced)
 
